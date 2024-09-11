@@ -11,7 +11,6 @@ function Show() {
             withCredentials:true
           });
         setData(feedback.data);
-        console.log(feedback.data);
       };
       getData();
     } catch (err) {

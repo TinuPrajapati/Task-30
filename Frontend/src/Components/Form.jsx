@@ -7,8 +7,7 @@ function Form() {
   const [email,setEmail]= useState('');
   const [msg,setMsg]= useState('');
 
-  const sendData =async (e)=>{
-    e.preventDefault()
+  const sendData =async ()=>{
     try{
       await axios.post("https://task-30-alpha.vercel.app/feedback/form",{
         name,email,message:msg
