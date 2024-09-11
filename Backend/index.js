@@ -13,9 +13,10 @@ const app = express();
 
 const frontendUrl = process.env.frontend_url;
 app.use(cors({
-  origin: "*",
+  origin: "https://task-30-uk41.vercel.app",
   methods: ['GET', 'POST',],
-  credentials:true
+  credentials:true,
+  allowedHeaders: "Content-Type,Authorization",
 }));
 
 app.use(bodyParser.urlencoded({extended:true}));
