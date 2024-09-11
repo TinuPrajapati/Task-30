@@ -7,7 +7,7 @@ function Show() {
   useEffect(() => {
     try {
       const getData = async () => {
-        const feedback = await axios.get("http://localhost:8080/feedback/show");
+        const feedback = await axios.get("https://task-30-alpha.vercel.app/feedback/show");
         setData(feedback.data);
         console.log(feedback.data);
       };

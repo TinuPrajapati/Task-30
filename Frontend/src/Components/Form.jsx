@@ -9,7 +9,7 @@ function Form() {
 
   const sendData =async ()=>{
     try{
-      await axios.post(`http://localhost:8080/feedback/form`,{
+      await axios.post(`https://task-30-alpha.vercel.app/feedback/form`,{
         name,email,message:msg
       })
     }catch(err){
