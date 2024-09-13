@@ -6,8 +6,10 @@ function Form() {
   const [name,setName]= useState('');
   const [email,setEmail]= useState('');
   const [msg,setMsg]= useState('');
+  const [error,setError] = useState("");
 
   const sendData =async (e)=>{
+    // e.preventDefault();
     try{
       await axios.post("https://task-30-alpha.vercel.app/feedback/form",{
         name,email,message:msg
@@ -16,8 +18,11 @@ function Form() {
       }
     )
     }catch(err){
-      console.log(err);
+      setError(err.response.data.message);
     }
+    setEmail('')
+    setMsg("")
+    setName('')
   }
 
   return (
@@ -25,11 +30,11 @@ function Form() {
       <h1 className="text-white text-3xl font-serif border-b-2">
         Feedback Form
       </h1>
-      <Link to="data" className="absolute top-14 right-4 bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
+      <Link to="show" className="absolute top-14 right-4 bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
         Show Feedback
       </Link>
       <form
-        action="data"
+        action="show"
         className="w-[40%] h-[70%] px-6 flex flex-col justify-center items-center gap-4 rounded-md bg-white shadow-2xl"
         onSubmit={sendData}
       >
@@ -40,6 +45,7 @@ function Form() {
           <input
             type="text"
             id="email"
+            value={name}
             className="border-2 rounded-md px-4 py-1 outline-none"
             onChange={e => setName(e.target.value)}
             required
@@ -52,6 +58,7 @@ function Form() {
           <input
             type="email"
             id="email"
+            value={email}
             className="border-2 rounded-md px-4 py-1 outline-none"
             onChange={e=> setEmail(e.target.value)}
             required
@@ -63,6 +70,7 @@ function Form() {
           </label>
           <textarea
             id="msg"
+            value={msg}
             className="border-2 rounded-md px-4 py-1 outline-none"
             onChange={e=> setMsg(e.target.value)}
             required

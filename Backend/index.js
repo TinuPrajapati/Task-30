@@ -11,10 +11,9 @@ import errorHandler from "./handler/errorHandler.js"
 const port = 8080;
 const app = express();
 
-const frontendUrl = process.env.frontend_url;
 app.use(cors({
   origin: "https://task-30-uk41.vercel.app",
-  methods: ['GET', 'POST',],
+  methods: ['GET', 'POST'],
   credentials:true,
   allowedHeaders: "Content-Type,Authorization",
 }));
