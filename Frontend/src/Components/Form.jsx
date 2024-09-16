@@ -12,7 +12,7 @@ function Form() {
       
 
   const sendData =async (e)=>{
-    // e.preventDefault();
+    e.preventDefault();
     try{
       await axios.post("https://task-30-alpha.vercel.app/feedback/form",{
         name,email,message:msg
@@ -81,7 +81,7 @@ function Form() {
             required
           ></textarea>
         </div>
-        <button className="bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
+        <button type="submit" className="bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
           Submit
         </button>
       </form>
