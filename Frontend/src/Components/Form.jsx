@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -7,6 +8,8 @@ function Form() {
   const [email,setEmail]= useState('');
   const [msg,setMsg]= useState('');
   const [error,setError] = useState("");
+  const navigate = useNavigate();
+      
 
   const sendData =async (e)=>{
     // e.preventDefault();
@@ -16,10 +19,12 @@ function Form() {
       },{
         withCredentials:true
       }
+      
     )
     }catch(err){
       setError(err.response.data.message);
     }
+    navigate('/show')
     setEmail('')
     setMsg("")
     setName('')
