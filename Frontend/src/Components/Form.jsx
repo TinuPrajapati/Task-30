@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -7,19 +8,23 @@ function Form() {
   const [email,setEmail]= useState('');
   const [msg,setMsg]= useState('');
   const [error,setError] = useState("");
+  const navigate = useNavigate();
+      
 
   const sendData =async (e)=>{
-    // e.preventDefault();
+    e.preventDefault();
     try{
       await axios.post(`${import.meta.env.VITE_API_Backend_URL}/feedback/form`,{
         name,email,message:msg
       },{
         withCredentials:true
       }
+      
     )
     }catch(err){
       setError(err.response.data.message);
     }
+    navigate('/show')
     setEmail('')
     setMsg("")
     setName('')
@@ -76,7 +81,7 @@ function Form() {
             required
           ></textarea>
         </div>
-        <button className="bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
+        <button type="submit" className="bg-sky-500 text-white text-xl px-6 py-2 rounded-md active:scale-90 outline-none">
           Submit
         </button>
       </form>

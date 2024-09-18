@@ -24,7 +24,9 @@ app.use(bodyParser.json());
 // DataBase 
 const dbLink = process.env.mongo_Atlas;
 async function main() {
-  await mongoose.connect(dbLink);
+  await mongoose.connect(dbLink, {
+    serverSelectionTimeoutMS: 30000, // 30 seconds
+  });
 };
 
 main()
