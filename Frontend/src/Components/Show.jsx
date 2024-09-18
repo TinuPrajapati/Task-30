@@ -8,7 +8,7 @@ function Show() {
     try {
       const getData = async () => {
         const feedback = await axios.get(
-          "https://task-30-alpha.vercel.app/feedback/show",
+          `${import.meta.env.VITE_API_Backend_URL}/feedback/show`,
           {},
           {
             withCredentials: true,

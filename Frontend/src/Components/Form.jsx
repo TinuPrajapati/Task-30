@@ -11,7 +11,7 @@ function Form() {
   const sendData =async (e)=>{
     // e.preventDefault();
     try{
-      await axios.post("https://task-30-alpha.vercel.app/feedback/form",{
+      await axios.post(`${import.meta.env.VITE_API_Backend_URL}/feedback/form`,{
         name,email,message:msg
       },{
         withCredentials:true

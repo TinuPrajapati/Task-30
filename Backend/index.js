@@ -1,7 +1,7 @@
 import "express-async-errors";
 import 'dotenv/config';
 
-import express, { Router } from "express";
+import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -12,7 +12,7 @@ const port = 8080;
 const app = express();
 
 app.use(cors({
-  origin: "https://task-30-uk41.vercel.app",
+  origin: process.env.frontend_url,
   methods: ['GET', 'POST'],
   credentials:true,
   allowedHeaders: "Content-Type,Authorization",
